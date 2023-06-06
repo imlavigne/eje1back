@@ -1,1 +1,7 @@
-[{"item":"telefono","price":"500"},{"item":"luz","price":"2000"},{"item":"gas","price":"300"},{"item":"verduleria","price":"5000"}]
+[{"item":"telefono","price":"500"},
+{"item":"luz","price":"2000"},
+{"item":"gas","price":"300"},
+{"item":"verduleria","price":"500"},
+{"item":"supermecado","price":"15000"},
+{"item":"auto","price":"100","date":"23.01.2023"},
+{"item":"ppe","price":"5","date":"21041991"}]
