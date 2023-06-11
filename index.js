@@ -1,4 +1,4 @@
-import { gastos,  filtroFecha, filtroGasto, gastosFiltrados } from "./gastos.js";
+import { gastos,  filtroFecha, filtroGasto, gastosFiltrados, filtrarNombre,nombreFiltrados } from "./gastos.js";
 import { save, get } from "./readWriteGastos.js";
 import inquirer from "inquirer";
 
@@ -76,7 +76,8 @@ const filterOptions =async()=>{
         message: "como desea realizar el filtro",
         choices:[
           {value: 1, name: "Por fecha"},
-          {value: 2, name: "Por gasto"},
+          {value: 2, name: "Por precio"},
+          {value: 3, name: "Por gasto"},
     
           {value: 99, name: "Exit"}
         ]
@@ -90,6 +91,9 @@ const filterOptions =async()=>{
       case 2:
           await priceFilter()
           break
+       case 3:
+        await nombreFilter()
+        break   
         case 99:
         break   
 
@@ -108,4 +112,12 @@ const priceFilter = async ()=>{
     const filtrarGastos= await gastosFiltrados(filtrado,gastos)
     console.log(filtrarGastos)
     
+}
+
+const nombreFilter = async ()=>{
+  const filtrado= await filtrarNombre()
+  const gastos = await get("./gastos.json")
+  const filtrarGastos= await nombreFiltrados(filtrado,gastos)
+  console.log(filtrarGastos)
+  
 }

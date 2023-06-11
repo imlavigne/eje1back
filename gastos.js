@@ -18,7 +18,7 @@ const questions = [
   {
     type: 'date',
     name: 'date',
-    message: "¿cuando?",
+    message: "¿cuando? (ingrese la fecha con el formato dd.mm.yy)",
 
   },
 
@@ -37,7 +37,16 @@ const filtrarPorFecha =[
   
   type: 'input',
   name: 'fecha',
-  message: "Ingrese la fecha que desea filtrar",
+  message: "Ingrese la fecha que desea filtrar (formato dd.mm.yy)",
+},
+]
+
+const filtrarPorNombre =[
+  {
+  
+  type: 'input',
+  name: 'name',
+  message: "Ingrese el gasto",
 },
 ]
 
@@ -58,6 +67,8 @@ export const gastos =()=>{
 
 })
 }
+
+
 
 export const filtroFecha =()=>{
   return new Promise((resolve, reject)=>{
@@ -87,8 +98,29 @@ export const filtroGasto =()=>{
 }
 
 
-export const gastosFiltrados =(filtro,lista)=>{
-  let filtrados = lista.filter(lista=>lista.price===filtro.gastos)
+
+export const filtrarNombre =()=>{
+  return new Promise((resolve, reject)=>{
+      try{
+          inquirer.prompt(filtrarPorNombre)
+          .then(ans=>{resolve(ans)
+           })
+  }catch(error){
+      reject(error)
+  }
+
+})
+}
+
+export const gastosFiltrados =(filtrado,gastos)=>{
+  let filtrados = gastos.filter(gastos=>gastos.price===filtrado.gastos)
   return(filtrados)
   // console.log(filtrados)
+}
+
+export const nombreFiltrados =(filtrado,gastos)=>{
+  // console.log("hola")
+  let filtrados = gastos.filter(gastos=>gastos.item===filtrado.Nombre)
+  return(filtrados)
+   console.log(filtrados)
 }
